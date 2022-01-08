@@ -1,4 +1,4 @@
-﻿@page
+﻿@page 
 @model Proiect_WPF.Pages.Bilete.CreateModel
 
 @{
@@ -36,10 +36,10 @@
                                     }
                                     @:<td>
                                         <input type="checkbox"
-                                               name="selectedCategories"
+                                               name="selectedFlights"
                                                value="@cat.ZborID"
                                                @(Html.Raw(cat.Assigned ? "checked=\"checked\"" : "")) />
-                                        @cat.ZborID @: @cat.Data
+                                        @cat.Data @: @cat.pret @cat.Durata
                                     @:</td>
                                 }
                             @:</tr>

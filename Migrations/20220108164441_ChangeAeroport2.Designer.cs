@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proiect_WPF.Data;
 
 namespace Proiect_WPF.Migrations
 {
     [DbContext(typeof(Proiect_WPFContext))]
-    partial class Proiect_WPFContextModelSnapshot : ModelSnapshot
+    [Migration("20220108164441_ChangeAeroport2")]
+    partial class ChangeAeroport2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

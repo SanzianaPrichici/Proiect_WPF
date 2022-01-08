@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Proiect_WPF.Data;
 using Proiect_WPF.Models;
 
-namespace Proiect_WPF.Pages.Zboruri
+namespace Proiect_WPF.Pages.Aeroporturi
 {
     public class CreateModel : PageModel
     {
@@ -21,12 +21,11 @@ namespace Proiect_WPF.Pages.Zboruri
 
         public IActionResult OnGet()
         {
-            ViewData["PlecareID"] = new SelectList(_context.Set<Aeroport>(), "ID", "Nume", "Oras");
             return Page();
         }
 
         [BindProperty]
-        public Zbor Zbor { get; set; }
+        public Aeroport Aeroport { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -36,7 +35,7 @@ namespace Proiect_WPF.Pages.Zboruri
                 return Page();
             }
 
-            _context.Zbor.Add(Zbor);
+            _context.Aeroport.Add(Aeroport);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

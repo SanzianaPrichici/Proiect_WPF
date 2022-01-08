@@ -18,12 +18,19 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Bilet.Client.ID)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Bilet.ZborID)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Bilet.ZborID)
+        <dd class="col-sm-2">
+            @Html.DisplayFor(model => model.Bilet.Client.Nume)
         </dd>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bilet.Client.Prenume)
+        </dd>
+        @*<dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Bilet.ZborID)
+        </dt>*@
+        @*<dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bilet.ZborID)
+        </dd>*@
+
     </dl>
     
     <form method="post">

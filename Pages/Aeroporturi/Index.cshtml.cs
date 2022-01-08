@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Proiect_WPF.Data;
 using Proiect_WPF.Models;
 
-namespace Proiect_WPF.Pages.Zboruri
+namespace Proiect_WPF.Pages.Aeroporturi
 {
     public class IndexModel : PageModel
     {
@@ -19,13 +19,11 @@ namespace Proiect_WPF.Pages.Zboruri
             _context = context;
         }
 
-        public IList<Zbor> Zbor { get;set; }
+        public IList<Aeroport> Aeroport { get;set; }
 
         public async Task OnGetAsync()
         {
-            Zbor = await _context.Zbor
-                .Include(b=>b.Aeroport)
-                .ToListAsync();
+            Aeroport = await _context.Aeroport.ToListAsync();
         }
     }
 }

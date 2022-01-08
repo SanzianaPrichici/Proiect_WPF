@@ -14,6 +14,10 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Zbor.ID" />
+            <label asp-for="Zbor.PlecareID" class="control-label">Publisher Name</label>
+            <select asp-for="Zbor.PlecareID" class="form-control" asp-items="ViewBag.PlecareID">
+            </select>
+            <span asp-validation-for="Zbor.PlecareID" class="text-danger"></span>
             <div class="form-group">
                 <label asp-for="Zbor.Data" class="control-label"></label>
                 <input asp-for="Zbor.Data" class="form-control" />

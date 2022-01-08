@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proiect_WPF.Data;
 
 namespace Proiect_WPF.Migrations
 {
     [DbContext(typeof(Proiect_WPFContext))]
-    partial class Proiect_WPFContextModelSnapshot : ModelSnapshot
+    [Migration("20220108154707_Addaeroport")]
+    partial class Addaeroport
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -111,7 +113,7 @@ namespace Proiect_WPF.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AeroportID")
+                    b.Property<string>("Aeroport_plecareID")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("Data")
@@ -128,7 +130,7 @@ namespace Proiect_WPF.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("AeroportID");
+                    b.HasIndex("Aeroport_plecareID");
 
                     b.ToTable("Zbor");
                 });
@@ -165,11 +167,11 @@ namespace Proiect_WPF.Migrations
 
             modelBuilder.Entity("Proiect_WPF.Models.Zbor", b =>
                 {
-                    b.HasOne("Proiect_WPF.Models.Aeroport", "Aeroport")
+                    b.HasOne("Proiect_WPF.Models.Aeroport", "Aeroport_plecare")
                         .WithMany("Zboruri")
-                        .HasForeignKey("AeroportID");
+                        .HasForeignKey("Aeroport_plecareID");
 
-                    b.Navigation("Aeroport");
+                    b.Navigation("Aeroport_plecare");
                 });
 
             modelBuilder.Entity("Proiect_WPF.Models.Aeroport", b =>

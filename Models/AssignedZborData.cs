@@ -11,6 +11,7 @@ namespace Proiect_WPF.Models
         public string Plecare { get; set; }
         public DateTime Data { get; set; }
         public decimal pret { get; set; }
+        public int Durata { get; set; }
         public bool Assigned { get; set; }
     }
 }

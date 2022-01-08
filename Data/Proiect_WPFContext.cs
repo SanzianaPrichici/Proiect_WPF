@@ -15,5 +15,7 @@ namespace Proiect_WPF.Data
         public DbSet<Proiect_WPF.Models.Client> Client { get; set; }
 
         public DbSet<Proiect_WPF.Models.Zbor> Zbor { get; set; }
+
+        public DbSet<Proiect_WPF.Models.Aeroport> Aeroport { get; set; }
     }
 }

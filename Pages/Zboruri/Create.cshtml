@@ -13,6 +13,10 @@
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <label asp-for="Zbor.PlecareID" class="control-label">Plecare</label>
+            <select asp-for="Zbor.PlecareID" class="form-control" asp-items="ViewBag.PlecareID">
+            </select>
+            <span asp-validation-for="Zbor.PlecareID" class="text-danger"></span>
             <div class="form-group">
                 <label asp-for="Zbor.Data" class="control-label"></label>
                 <input asp-for="Zbor.Data" class="form-control" />

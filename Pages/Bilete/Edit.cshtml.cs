@@ -30,7 +30,7 @@ namespace Proiect_WPF.Pages.Bilete
             }
 
             Bilet = await _context.Bilet
-                .Include(c => c.Client)
+                .Include(b => b.Client)
                 .Include(b => b.TicketFlights).ThenInclude(b => b.Zbor)
                 .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.ID == id);
@@ -57,8 +57,7 @@ namespace Proiect_WPF.Pages.Bilete
             }
             var biletToUpdate = await _context.Bilet
             .Include(i => i.Client)
-            .Include(i => i.TicketFlights)
-            .ThenInclude(i => i.Zbor)
+            .Include(i => i.TicketFlights).ThenInclude(i => i.Zbor)
             .FirstOrDefaultAsync(s => s.ID == id);
             if (biletToUpdate == null)
             {
@@ -67,7 +66,7 @@ namespace Proiect_WPF.Pages.Bilete
             if (await TryUpdateModelAsync<Bilet>(
             biletToUpdate,
             "Bilet",
-            i => i.Client))
+            i => i.ClientID))
             {
                 UpdateBiletFlight(_context, selectedFlights, biletToUpdate);
                 await _context.SaveChangesAsync();
@@ -78,9 +77,9 @@ namespace Proiect_WPF.Pages.Bilete
             return Page();
         }
 
-        private bool BiletExists(int id)
-        {
-            return _context.Bilet.Any(e => e.ID == id);
-        }
+        //private bool BiletExists(int id)
+        //{
+        //    return _context.Bilet.Any(e => e.ID == id);
+        //}
     }
 }

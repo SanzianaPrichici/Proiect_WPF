@@ -20,10 +20,10 @@
                 <span asp-validation-for="Bilet.ClientID" class="text-danger"></span>
             </div>
             @*<div class="form-group">
-            <label asp-for="Bilet.ZborID" class="control-label"></label>
+            <label asp-for="Bilet" class="control-label"></label>
             <input asp-for="Bilet.ZborID" class="form-control" />
-            <span asp-validation-for="Bilet.ZborID" class="text-danger"></span>
-        </div>*@
+            <span asp-validation-for="Bilet.ZborID" class="text-danger"></span>*@
+        <!--</div>-->
             <div class="form-group">
                 <div class="table">
                     <table>
@@ -38,7 +38,7 @@
                                     }
                                     @:<td>
                                         <input type="checkbox"
-                                               name="selectedCategories"
+                                               name="selectedFlights"
                                                value="@cat.ZborID"
                                                @(Html.Raw(cat.Assigned ? "checked=\"checked\"" : "")) />
                                         @cat.ZborID @: @cat.Data

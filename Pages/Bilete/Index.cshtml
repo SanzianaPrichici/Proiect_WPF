@@ -1,4 +1,4 @@
-﻿@page "/Index/{id:int?}"
+﻿@page "/{id:int?}"
 @model Proiect_WPF.Pages.Bilete.IndexModel
 
 @{
@@ -16,9 +16,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.Bilet[0].Client)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Bilet[0].ZborID)
-            </th>
+            <td>
+                @Html.DisplayNameFor(model => model.Bilet[0].Client.Prenume)
+            </td>
+            @*<th>
+            @Html.DisplayNameFor(model => model.Bilet[0].ZborID)
+        </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.Bilet[0].TicketFlights)
             </th>
@@ -34,16 +37,19 @@
                 }
         <tr class="@selectedRow">
             <td>
-                @Html.DisplayFor(modelItem => item.Client.ID)
+                @Html.DisplayFor(modelItem => item.Client.Nume)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ZborID)
+                @Html.DisplayFor(modelItem => item.Client.Prenume)
             </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.ZborID)
+        </td>*@
             <td>
                 @{
-                    foreach (var category in item.TicketFlights)
+                    foreach (var flight in item.TicketFlights)
                     {
-                        @category.Zbor.ID @: @category.Zbor.Data <br />
+                        @flight.Zbor.ID @: @flight.Zbor.PlecareID <br /> @flight.Zbor.Data <br /> @flight.Zbor.Durata <br/ /> @flight.Zbor.pret <br /> <br />
                     }
                 }
             </td>

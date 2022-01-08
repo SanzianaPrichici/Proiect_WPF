@@ -74,29 +74,29 @@ namespace Proiect_WPF.Pages.Bilete
         //}
         public async Task<IActionResult> OnPostAsync(int? id, string[] selectedFlights)
         {
-            var newBook = new Bilet();
+            var newBilet = new Bilet();
             if (selectedFlights != null)
             {
-                newBook.TicketFlights = new List<TicketFlight>();
+                newBilet.TicketFlights = new List<TicketFlight>();
                 foreach (var cat in selectedFlights)
                 {
                     var catToAdd = new TicketFlight
                     {
                         ZborID = int.Parse(cat)
                     };
-                    newBook.TicketFlights.Add(catToAdd);
+                    newBilet.TicketFlights.Add(catToAdd);
                 }
             }
             if (await TryUpdateModelAsync<Bilet>(
-            newBook,
+            newBilet,
             "Bilet",
-            i => i.Client))
+            i => i.ClientID))
             {
-                UpdateBiletFlight(_context, selectedFlights, newBook);
+                _context.Bilet.Add(newBilet);
                 await _context.SaveChangesAsync();
                 return RedirectToPage("./Index");
             }
-            PopulateAssignedZborData(_context, newBook);
+            PopulateAssignedZborData(_context, newBilet);
             return Page();
         }
     }

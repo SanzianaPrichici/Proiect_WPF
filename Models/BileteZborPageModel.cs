@@ -24,6 +24,7 @@ namespace Proiect_WPF.Models
                     Plecare = cat.PlecareID,
                     Data = cat.Data,
                     pret=cat.pret,
+                    Durata=cat.Durata,
                     Assigned = biletFlys.Contains(cat.ID)
                 }) ;
             }

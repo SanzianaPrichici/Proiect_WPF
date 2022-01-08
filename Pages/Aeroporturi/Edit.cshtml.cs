@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Proiect_WPF.Data;
 using Proiect_WPF.Models;
 
-namespace Proiect_WPF.Pages.Zboruri
+namespace Proiect_WPF.Pages.Aeroporturi
 {
     public class EditModel : PageModel
     {
@@ -21,22 +21,21 @@ namespace Proiect_WPF.Pages.Zboruri
         }
 
         [BindProperty]
-        public Zbor Zbor { get; set; }
+        public Aeroport Aeroport { get; set; }
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(string id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Zbor = await _context.Zbor.FirstOrDefaultAsync(m => m.ID == id);
+            Aeroport = await _context.Aeroport.FirstOrDefaultAsync(m => m.ID == id);
 
-            if (Zbor == null)
+            if (Aeroport == null)
             {
                 return NotFound();
             }
-            ViewData["PlecareID"] = new SelectList(_context.Set<Aeroport>(), "ID", "Nume");
             return Page();
         }
 
@@ -49,7 +48,7 @@ namespace Proiect_WPF.Pages.Zboruri
                 return Page();
             }
 
-            _context.Attach(Zbor).State = EntityState.Modified;
+            _context.Attach(Aeroport).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +56,7 @@ namespace Proiect_WPF.Pages.Zboruri
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ZborExists(Zbor.ID))
+                if (!AeroportExists(Aeroport.ID))
                 {
                     return NotFound();
                 }
@@ -70,9 +69,9 @@ namespace Proiect_WPF.Pages.Zboruri
             return RedirectToPage("./Index");
         }
 
-        private bool ZborExists(int id)
+        private bool AeroportExists(string id)
         {
-            return _context.Zbor.Any(e => e.ID == id);
+            return _context.Aeroport.Any(e => e.ID == id);
         }
     }
 }
