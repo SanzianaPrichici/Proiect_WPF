@@ -1,0 +1,58 @@
+﻿@page "/Index/{id:int?}"
+@model Proiect_WPF.Pages.Bilete.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Bilet[0].Client)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bilet[0].ZborID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bilet[0].TicketFlights)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.BiletD.Bilete) {
+    string selectedRow = "";
+    if (item.ID == Model.BiletID)
+                {
+                    selectedRow = "table-success";
+                }
+        <tr class="@selectedRow">
+            <td>
+                @Html.DisplayFor(modelItem => item.Client.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZborID)
+            </td>
+            <td>
+                @{
+                    foreach (var category in item.TicketFlights)
+                    {
+                        @category.Zbor.ID @: @category.Zbor.Data <br />
+                    }
+                }
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
